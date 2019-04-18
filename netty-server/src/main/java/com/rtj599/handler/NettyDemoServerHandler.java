@@ -25,7 +25,7 @@ public class NettyDemoServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("channel unregisted");
+        System.out.println("channel unregistered");
         super.channelUnregistered(ctx);
     }
 
