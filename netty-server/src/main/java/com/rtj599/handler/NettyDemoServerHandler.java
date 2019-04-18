@@ -43,7 +43,7 @@ public class NettyDemoServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf buf=(ByteBuf)msg;
-        System.out.println("[NettyDemoServerHandler.channelRead]:"+buf.toString(CharsetUtil.UTF_8));
+        System.out.println("[NettyDemoServerHandler.channelRead]I have received your message:"+buf.toString(CharsetUtil.UTF_8));
         ctx.write(msg);
     }
 
@@ -67,8 +67,12 @@ public class NettyDemoServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         cause.printStackTrace();
-        ctx.close();
 
+        /*
+         * In many cases,we should handle exception and try to recover server instead of closing connection.
+         * However,this is just a demo >_ <
+        **/
+        ctx.close();
 //        ctx.fireExceptionCaught(cause);
     }
 
